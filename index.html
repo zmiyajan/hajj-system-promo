@@ -5,7 +5,16 @@
 <meta name="robots" content="noindex, nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>نظام إدارة جوازات الحجاج</title>
-<meta name="description" content="كل جواز في مكانه، من لحظة الاستلام حتى المغادرة.">
+<meta name="description" content="كل جواز في مكانه، من استلامه حتى مغادرة الحاج.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ar_SA">
+<meta property="og:title" content="نظام إدارة جوازات الحجاج">
+<meta property="og:description" content="كل جواز في مكانه، من استلامه حتى مغادرة الحاج.">
+<meta property="og:url" content="https://zmiyajan.github.io/hajj-passport/">
+<meta property="og:image" content="https://zmiyajan.github.io/hajj-passport/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 @font-face{font-family:"Thmanyah Serif";src:url(assets/fonts/thmanyahserifdisplay-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
 @font-face{font-family:"Thmanyah Sans";src:url(assets/fonts/thmanyahsans-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
@@ -44,25 +53,29 @@ nav{display:flex;gap:28px;font-size:15px;color:var(--muted)}
 nav a:hover{color:var(--navy)}
 @media (max-width:760px){nav{display:none}}
 
-.hero{position:relative;padding-top:150px;overflow:hidden;
+.hero{position:relative;padding-top:128px;overflow:hidden;
   background:radial-gradient(900px 420px at 85% -10%, rgba(178,144,87,.13), transparent 70%),linear-gradient(180deg,#F6F3EC 0%, var(--paper) 62%)}
-.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:linear-gradient(to left, rgba(16,60,104,.05) 1px, transparent 1px);background-size:96px 100%}
 .hero .wrap{position:relative}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:end}
-.hero h1{font-size:clamp(44px,7vw,92px);line-height:1.12;letter-spacing:-.01em}
+.hero h1{font-size:clamp(38px,5.2vw,74px);line-height:1.18;letter-spacing:-.01em}
 .hero h1 span{display:block;color:var(--gold)}
 .hero .lede{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:40ch;padding-bottom:10px}
 .proof-line{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-size:15px;color:var(--ink)}
 .proof-line b{font-family:var(--f-display);color:var(--navy);font-size:20px;margin-inline-end:6px}
-@media (max-width:880px){.hero{padding-top:120px}.hero-grid{grid-template-columns:1fr;gap:20px}}
+@media (max-width:880px){.hero{padding-top:110px}.hero-grid{grid-template-columns:1fr;gap:20px}}
+@media (max-width:560px){.film-cap span:last-child{display:none}}
 
-.film{position:relative;margin-top:56px;padding-bottom:96px}
-.film::after{content:"";position:absolute;inset:auto 0 0;height:55%;background:var(--white);z-index:0}
+.film{position:relative;margin-top:40px;padding-bottom:96px}
+.film::after{content:"";position:absolute;inset:auto calc(50% - 50vw) 0;height:55%;background:var(--white);z-index:0}
 .screen{position:relative;z-index:1;border-radius:18px;overflow:hidden;background:var(--deep);box-shadow:0 50px 90px -40px rgba(7,26,51,.55),0 0 0 1px rgba(178,144,87,.35)}
 .screen video{display:block;width:100%;aspect-ratio:16/9;background:var(--deep)}
+.play{position:absolute;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:88px;height:88px;border-radius:50%;background:var(--gold);border:0;cursor:pointer;display:grid;place-items:center;box-shadow:0 20px 40px -12px rgba(7,26,51,.6);transition:transform .2s}
+.play:hover{transform:translate(-50%,-50%) scale(1.06)}
+.play svg{width:30px;height:30px;margin-inline-start:4px;fill:#fff}
+.play-label{position:absolute;bottom:22px;left:0;right:0;text-align:center;color:#fff;font-size:15px;text-shadow:0 1px 8px rgba(0,0,0,.5);pointer-events:none}
 .film-cap{position:relative;z-index:1;display:flex;justify-content:space-between;gap:16px;margin-top:16px;font-size:14px;color:var(--soft)}
 
-.problem{background:var(--white);padding-block:40px 120px}
+.problem{background:var(--white);padding-block:72px 120px}
 .problem-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start}
 .problem blockquote{margin:18px 0 0;font-family:var(--f-display);font-size:clamp(28px,3.4vw,44px);line-height:1.45;color:var(--navy)}
 .problem blockquote em{font-style:normal;color:var(--gold)}
@@ -74,37 +87,40 @@ nav a:hover{color:var(--navy)}
 @media (max-width:880px){.problem-grid{grid-template-columns:1fr;gap:36px}}
 
 .journey{padding-block:120px;background:var(--paper)}
-.journey-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:72px;flex-wrap:wrap}
+.journey-head{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;margin-bottom:56px;flex-wrap:wrap}
 .journey-head h2{font-size:clamp(32px,4vw,52px);line-height:1.3;margin-top:14px}
-.journey-head p{color:var(--muted);max-width:38ch}
-.step{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:center;padding-block:44px;border-top:1px solid var(--line)}
+.journey-head p{color:var(--muted);max-width:34ch;font-size:16px}
+.step{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:center;padding-block:56px;border-top:1px solid var(--line)}
 .step:nth-of-type(even){grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
 .step:nth-of-type(even) .copy{order:2}
-.step .n{font-family:var(--f-display);font-size:15px;color:var(--gold);margin-bottom:10px}
+.step .n{font-size:14px;font-weight:500;color:var(--gold);margin-bottom:12px}
+.step .n b{display:block;font-family:var(--f-display);font-size:44px;line-height:1;color:#D9D2C2;margin-bottom:8px}
 .step h3{font-size:clamp(26px,2.8vw,36px);line-height:1.35;margin-bottom:12px}
 .step p{color:var(--muted);font-size:17px;max-width:42ch}
 .visual{position:relative;border-radius:16px;background:var(--white);border:1px solid var(--line);overflow:hidden;box-shadow:0 30px 60px -40px rgba(7,26,51,.35)}
-.visual.shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top right}
+.visual.shot{aspect-ratio:16/10}
+.visual.shot img{width:100%;height:auto;transform:scale(1.55);transform-origin:62% 0}
 @media (max-width:880px){.step,.step:nth-of-type(even){grid-template-columns:1fr;gap:28px}.step:nth-of-type(even) .copy{order:0}}
 
 .v-scan{padding:44px 40px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center;background:linear-gradient(180deg,#FFFFFF,#F7F5EF)}
-.pp{width:150px;height:200px;border-radius:10px;background:linear-gradient(160deg,#16467A,#0C2D52);position:relative;box-shadow:0 18px 30px -16px rgba(7,26,51,.6)}
+.pp{display:grid;place-items:center;width:150px;height:200px;border-radius:10px;background:linear-gradient(160deg,#16467A,#0C2D52);position:relative;box-shadow:0 18px 30px -16px rgba(7,26,51,.6)}
 .pp::before{content:"";position:absolute;inset:10px;border:1px solid rgba(201,168,108,.45);border-radius:6px}
+.pp svg{width:48px;height:48px;color:var(--gold-hi);margin-top:18px}
 .pp::after{content:"جواز سفر";position:absolute;top:26px;inset-inline:0;text-align:center;font-family:var(--f-display);color:var(--gold-hi);font-size:15px}
 .bc{background:#fff;border-radius:10px;padding:18px 18px 12px;border:1px solid var(--line);position:relative;overflow:hidden}
 .bars{height:74px;background:repeating-linear-gradient(90deg,#14263A 0 2px,transparent 2px 4px,#14263A 4px 7px,transparent 7px 9px,#14263A 9px 10px,transparent 10px 14px,#14263A 14px 17px,transparent 17px 18px)}
 .bc code{display:block;text-align:center;font-family:var(--f-mono);letter-spacing:.32em;font-size:15px;color:var(--ink);margin-top:10px;direction:ltr}
-.beam{position:absolute;inset-block:10px;width:2px;background:#E0483E;box-shadow:0 0 12px 2px rgba(224,72,62,.55);inset-inline-start:12%;animation:beam 3.2s ease-in-out infinite}
+.beam{position:absolute;inset-block:10px;width:2px;background:var(--gold-hi);box-shadow:0 0 14px 2px rgba(201,168,108,.6);inset-inline-start:12%;animation:beam 3.2s ease-in-out infinite}
 @keyframes beam{0%,100%{inset-inline-start:10%}50%{inset-inline-start:88%}}
-.chip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;font-weight:700;color:#166534;background:#E3F5E9;padding:5px 14px;border-radius:999px}
+.chip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;font-weight:700;color:var(--navy);background:#EEF2F7;padding:5px 14px;border-radius:999px}
 .chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
-@media (max-width:560px){.v-scan{grid-template-columns:1fr;justify-items:center}.pp{width:120px;height:160px}}
+@media (max-width:560px){.v-scan{grid-template-columns:1fr;justify-items:center}.v-scan>div{width:100%}.pp{width:120px;height:160px}}
 
 .v-drawer{padding:36px}
 .v-drawer .t{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:16px}
 .v-drawer .t b{font-family:var(--f-display);color:var(--navy);font-size:18px}
-.slots{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:7px}
-.slots span{aspect-ratio:3/4;border-radius:5px;background:#E9EDF2;display:grid;place-items:end center;font-size:10px;color:#8A9AAB;padding-bottom:3px}
+.slots{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:6px}
+.slots span{aspect-ratio:3/4;border-radius:5px;background:#E9EDF2;display:grid;place-items:end center;font-size:11px;color:#9AA8B6;padding-bottom:3px}
 .slots span.on{background:var(--navy);color:#fff;box-shadow:0 0 0 2px var(--gold-hi)}
 .slots span.out{background:#FCE9D7;color:#9A4A12}
 .slots span.mad{background:#ECE6FB;color:#5B3AA8}
@@ -122,7 +138,7 @@ nav a:hover{color:var(--navy)}
 .figures div+div{border-inline-start:1px solid rgba(255,255,255,.12);padding-inline-start:32px}
 .figures b{display:block;font-family:var(--f-display);font-size:clamp(44px,6vw,76px);line-height:1.1;color:#fff}
 .figures span{color:#AFC0D2;font-size:16px}
-.voice{margin-top:64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.voice{margin-top:64px;display:grid;grid-template-columns:1fr;gap:14px;max-width:760px}
 .voice p{font-family:var(--f-display);font-size:clamp(22px,2.4vw,30px);line-height:1.6;color:#fff}
 .voice p em{font-style:normal;color:var(--gold-hi)}
 .voice small{display:block;color:#AFC0D2;font-size:15px;line-height:1.8;font-family:var(--f-body)}
@@ -140,16 +156,16 @@ nav a:hover{color:var(--navy)}
 .co b{display:block;font-size:14px;color:var(--navy);margin-bottom:8px}
 .co .row{display:flex;gap:6px}
 .co .row span{font-size:11.5px;padding:3px 8px;border-radius:6px;color:#fff;text-align:center}
+.co .row .c{background:transparent;color:var(--gold);border:1px solid var(--gold)}
 .co .row .s{background:var(--navy);flex:1}
 .c1{top:0;left:0}.c2{top:0;right:0}.c3{bottom:0;left:0}.c4{bottom:0;right:0}
 @media (max-width:880px){.model-grid{grid-template-columns:1fr;gap:40px}}
-@media (max-width:480px){.co{width:46%;padding:10px}.core{width:104px;height:104px;font-size:12px}}
+@media (max-width:480px){.hub{aspect-ratio:1/1.05}.co{width:46%;padding:10px}.co b{font-size:13px}.core{width:84px;height:84px;font-size:12px}.core svg{width:28px;height:28px}}
 
 .next{padding-block:100px;background:var(--paper);border-top:1px solid var(--line)}
 .next .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
 .next h2{font-size:clamp(28px,3vw,40px);line-height:1.35;margin-top:14px}
 .next p{color:var(--muted)}
-.pill{display:inline-block;font-size:13px;font-weight:700;color:var(--gold);border:1px dashed var(--gold);border-radius:999px;padding:3px 14px}
 @media (max-width:880px){.next .wrap{grid-template-columns:1fr;gap:20px}}
 
 .closing{background:var(--deep);color:#fff;text-align:center;padding-block:110px}
@@ -181,16 +197,16 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <section class="hero">
   <div class="wrap">
     <div class="hero-grid">
-      <h1>كل جواز في مكانه.<span>من الاستلام حتى المغادرة.</span></h1>
+      <h1>كل جواز في مكانه.<span>من الاستلام حتى مغادرة الحاج.</span></h1>
       <div>
         <p class="lede">نظام عربي يتابع جوازات الحجاج طوال الموسم: متى استُلم كل جواز، وأين حُفظ، ومن تعامل معه، وإلى أين انتقل.</p>
-        <div class="proof-line"><span><b class="num">≈ 3,000</b>حاج</span><span><b class="num">4</b>موظفين للجوازات</span><span><b>موسم</b>تشغيلي فعلي</span></div>
+        <div class="proof-line"><span>جُرِّب في موسم حج فعلي مع <b class="num">نحو 3,000</b>حاج</span></div>
       </div>
     </div>
   </div>
   <div class="wrap film" id="film">
-    <div class="screen"><video controls playsinline preload="metadata" poster="assets/video-poster.jpg"><source src="assets/hajj-system-video.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video></div>
-    <div class="film-cap"><span>الفكرة في دقيقتين ونصف: المشكلة، والحل، والتجربة.</span><span>شغّل الصوت</span></div>
+    <div class="screen"><video id="film-video" playsinline preload="metadata" poster="assets/video-poster.jpg"><source src="assets/hajj-system-video.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video><button class="play" id="play" aria-label="تشغيل الفيديو"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button><span class="play-label" id="play-label">شاهد الفكرة في دقيقتين ونصف</span></div>
+    <div class="film-cap"><span>الفكرة في دقيقتين ونصف، من المشكلة إلى التجربة الميدانية.</span><span>يُفضَّل التشغيل مع الصوت</span></div>
   </div>
 </section>
 
@@ -201,10 +217,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
       <blockquote>في كل موسم تستلم الشركة آلاف الجوازات، وكل جواز منها <em>أمانة</em> لا تحتمل الخطأ.</blockquote>
     </div>
     <ol class="symptoms">
-      <li><i>١</i><div><b>ملفات متفرقة</b><span>نسخ مختلفة من الكشوف بين الموظفين، ولا مصدر واحد يُعتمد عليه.</span></div></li>
-      <li><i>٢</i><div><b>جواز لا يُعرف مكانه</b><span>البحث عن جواز واحد يعني فتح الأدراج واحداً واحداً.</span></div></li>
-      <li><i>٣</i><div><b>لا أثر لمن غيّر ماذا</b><span>ولا يُعرف من سلّم الجواز، ولا متى، ولا لمن.</span></div></li>
-      <li><i>٤</i><div><b>اعتماد على أشخاص بعينهم</b><span>العمل يحتاج موظفاً متمرساً يعرف «أين كل شيء».</span></div></li>
+      <li><i>1</i><div><b>ملفات متفرقة</b><span>نسخ مختلفة من الكشوف بين الموظفين، ولا مصدر واحد يُعتمد عليه.</span></div></li>
+      <li><i>2</i><div><b>جواز لا يُعرف مكانه</b><span>البحث عن جواز واحد يعني فتح الأدراج واحداً واحداً.</span></div></li>
+      <li><i>3</i><div><b>لا سجلّ لما تغيّر ومن غيّره</b><span>فلا يُعرف من سلّم الجواز ومتى ولمن.</span></div></li>
+      <li><i>4</i><div><b>اعتماد على أشخاص بعينهم</b><span>ويتوقف العمل على موظف متمرّس يعرف «أين كل شيء».</span></div></li>
     </ol>
   </div>
 </section>
@@ -212,39 +228,39 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <section class="journey" id="journey">
   <div class="wrap">
     <div class="journey-head">
-      <div><div class="kicker">الحل</div><h2>رحلة الجواز، خطوة بخطوة</h2></div>
-      <p>يتابع النظام الجواز من لحظة استلامه حتى مغادرة صاحبه، وكل خطوة مسجلة باسم من قام بها ووقتها.</p>
+      <div><div class="kicker">الحل</div><h2>أربع خطوات، وسجلّ واحد</h2></div>
+      <p>يتابع النظام الجواز من لحظة استلامه حتى مغادرة صاحبه، وتُسجَّل كل خطوة باسم منفّذها ووقت تنفيذها.</p>
     </div>
 
     <article class="step">
-      <div class="copy"><div class="n">٠١ · الاستلام</div><h3>مسحٌ واحد، ويُسجَّل الجواز</h3><p>يمسح الموظف باركود رقم الجواز بالقارئ أو بكاميرا الجوال، فيُسجَّل استلامه فوراً ويُطابق مع كشف الحجاج.</p></div>
+      <div class="copy"><div class="n"><b>01</b>الاستلام</div><h3>مسحة واحدة، ويُسجَّل الجواز</h3><p>يمسح الموظف باركود رقم الجواز بالقارئ أو بكاميرا الجوال، فيُسجَّل استلامه فوراً ويُطابَق مع كشف الحجاج.</p></div>
       <div class="visual v-scan" aria-hidden="true">
-        <div class="pp"></div>
+        <div class="pp"><svg aria-hidden="true"><use href="#logo"/></svg></div>
         <div><div class="bc"><div class="bars"></div><code>X5223422</code><span class="beam"></span></div><span class="chip">مسجّل</span></div>
       </div>
     </article>
 
     <article class="step">
-      <div class="copy"><div class="n">٠٢ · الحفظ</div><h3>لكل جواز رقم، ومكان معروف</h3><p>يأخذ كل جواز رقماً لا يتكرر، ومكاناً محدداً في مجموعته ودرجه، فيُعرف مكانه الفعلي في أي لحظة.</p></div>
+      <div class="copy"><div class="n"><b>02</b>الحفظ</div><h3>لكل جواز رقم، وموضع معروف</h3><p>يأخذ كل جواز رقماً فريداً وموضعاً محدداً في مجموعته ودرجه، فيُعرف أين هو في أي لحظة.</p></div>
       <div class="visual v-drawer" aria-hidden="true">
         <div class="t"><b>درج 7</b><span>بيانات توضيحية</span></div>
         <div class="slots">
-          <span>1</span><span>2</span><span>3</span><span>4</span><span class="mad">5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-          <span>11</span><span>12</span><span class="out">13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+          <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          <span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
           <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span class="on">27</span><span>28</span><span>29</span><span>30</span>
-          <span>31</span><span>32</span><span>33</span><span class="mad">34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+          <span>31</span><span>32</span><span>33</span><span>34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
         </div>
-        <div class="tag">رقم <b class="num">27</b> · المجموعة <b class="num">3</b> · <span style="color:#166534">في مكانه</span></div>
+        <div class="tag">الرقم <b class="num">27</b> · المجموعة <b class="num">3</b> · الدرج <b class="num">7</b></div>
       </div>
     </article>
 
     <article class="step">
-      <div class="copy"><div class="n">٠٣ · المتابعة</div><h3>كل ما حدث للجواز، في سجل واحد</h3><p>الإخراج والإعادة، والتنويم والاحتجاز، وبطاقة نسك، والفنادق والرحلات. بحث فوري بالاسم أو رقم الجواز.</p></div>
+      <div class="copy"><div class="n"><b>03</b>المتابعة</div><h3>كل ما حدث للجواز، في سجل واحد</h3><p>يُسجِّل النظام إخراج الجواز وإعادته، وحالات التنويم والاحتجاز، وبطاقة نسك، والسكن والرحلات، مع بحث فوري بالاسم أو رقم الجواز.</p></div>
       <div class="visual shot"><img src="assets/screens/pilgrims.jpg" alt="سجل الحجاج في النظام" loading="lazy"></div>
     </article>
 
     <article class="step">
-      <div class="copy"><div class="n">٠٤ · الترحيل</div><h3>كشوف جاهزة، وتأكيد بالمسح</h3><p>كشوف الحافلات إلى المدينة والمطار تُبنى من بيانات الحجاج، ويُؤكَّد صعود كل راكب بالمسح، مع تعهد استلام وتسليم جاهز للطباعة.</p></div>
+      <div class="copy"><div class="n"><b>04</b>الترحيل</div><h3>كشوف جاهزة، وتأكيد بالمسح</h3><p>تُستخرج كشوف الحافلات إلى المدينة والمطار من بيانات الحجاج، ويُؤكَّد صعود كل حاج بالمسح، مع نموذج تعهّد بالاستلام والتسليم جاهز للطباعة.</p></div>
       <div class="visual shot"><img src="assets/screens/transfer-detail.jpg" alt="كشف ترحيل قيد التأكيد" loading="lazy"></div>
     </article>
   </div>
@@ -253,15 +269,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 <section class="proof" id="proof">
   <div class="wrap">
     <div class="kicker">التجربة الميدانية</div>
-    <h2>جُرّب في موسم تشغيلي كامل</h2>
+    <h2>جُرِّب في موسم حج فعلي</h2>
     <div class="figures">
-      <div><b class="num">≈ 3,000</b><span>حاج أُديرت جوازاتهم بالنظام</span></div>
+      <div><b class="num">3,000</b><span>حاج تقريباً أُديرت جوازاتهم بالنظام</span></div>
       <div><b class="num">4</b><span>موظفين تولّوا ملف الجوازات</span></div>
-      <div><b>موسم</b><span>تشغيل فعلي في أحد مراكز الخدمة</span></div>
+      <div><b class="num">1</b><span>موسم حج في أحد مراكز الخدمة</span></div>
     </div>
     <div class="voice">
-      <p>موظف جديد لم يعمل في الجوازات من قبل، <em>يتعلّمه بسرعة ويعمل به بثقة.</em></p>
-      <small>أفاد الفريق المشغّل بأن العمل بالنظام كان أسهل وأسرع وأوضح من الإدخال اليدوي، لأن النظام يرشد الموظف في كل خطوة ويقلل فرص الخطأ.</small>
+      <p>الموظف الجديد، وإن لم يعمل في الجوازات من قبل، <em>يتعلّم النظام بسرعة ويعمل به بثقة.</em></p>
+      <small>وأفاد الموظفون الأربعة بأن العمل بالنظام أسهل وأسرع وأوضح من الإدخال اليدوي.</small>
     </div>
   </div>
 </section>
@@ -270,15 +286,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   <div class="wrap model-grid">
     <div>
       <div class="kicker">نموذج العمل</div>
-      <h2>اشتراك، وتخصيص لكل شركة</h2>
-      <p>تستأجر شركة الحج النظام لموسمها بدلاً من بناء نظام خاص بها، ويُخصَّص حسب طريقة عملها: تقاريرها ونماذجها وإجراءاتها الداخلية.</p>
+      <h2>نظام واحد، يُفصَّل لكل شركة</h2>
+      <p>تشترك شركة الحج في النظام بدل أن تبني نظامها الخاص، ثم يُخصَّص بما يناسب طريقة عملها: تقاريرها ونماذجها وإجراءاتها الداخلية.</p>
     </div>
     <div class="hub" aria-hidden="true">
-      <svg class="lines" viewBox="0 0 500 400" preserveAspectRatio="none"><g stroke="#C9B48A" stroke-width="1" fill="none"><line x1="250" y1="200" x2="105" y2="45"/><line x1="250" y1="200" x2="395" y2="45"/><line x1="250" y1="200" x2="105" y2="355"/><line x1="250" y1="200" x2="395" y2="355"/></g></svg>
-      <div class="co c1"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span style="background:#B29057">تخصيص</span></div></div>
-      <div class="co c2"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span style="background:#6EA3C2">تخصيص</span></div></div>
-      <div class="co c3"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span style="background:#7A9A6E">تخصيص</span></div></div>
-      <div class="co c4"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span style="background:#9A82B8">تخصيص</span></div></div>
+      <svg class="lines" viewBox="0 0 500 400" preserveAspectRatio="none"><g stroke="#C9B48A" stroke-width="1" fill="none"><line stroke-dasharray="3 5" x1="250" y1="200" x2="105" y2="45"/><line stroke-dasharray="3 5" x1="250" y1="200" x2="395" y2="45"/><line stroke-dasharray="3 5" x1="250" y1="200" x2="105" y2="355"/><line stroke-dasharray="3 5" x1="250" y1="200" x2="395" y2="355"/></g></svg>
+      <div class="co c1"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span class="c">تقارير</span></div></div>
+      <div class="co c2"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span class="c">نماذج</span></div></div>
+      <div class="co c3"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span class="c">إجراءات</span></div></div>
+      <div class="co c4"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span class="c">تقارير</span></div></div>
       <div class="core"><div><svg><use href="#logo"/></svg>النظام</div></div>
     </div>
   </div>
@@ -286,18 +302,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 
 <section class="next">
   <div class="wrap">
-    <div><span class="pill">التوسع القادم</span><h2>الربط مع المنصات الرسمية</h2></div>
-    <p>من التوسعات المخطط لها الربط مع المنصات الرسمية لوزارة الحج والعمرة عند إتاحتها واعتمادها، لتصل بيانات الحجاج إلى النظام دون ملفات يدوية.</p>
+    <div><div class="kicker">توسّع مخطط له</div><h2>نحو الربط بالمنصات الرسمية</h2></div>
+    <p>ومن التوسعات المخطط لها الربط بالمنصات الرسمية لوزارة الحج والعمرة، متى أُتيح ذلك واعتُمد، لتصل بيانات الحجاج إلى النظام دون ملفات يدوية.</p>
   </div>
 </section>
 
 <section class="closing">
   <svg aria-hidden="true"><use href="#logo"/></svg>
-  <h2>نظام إدارة جوازات الحجاج</h2>
-  <p>كل جواز في مكانه.</p>
+  <h2>كل جواز في مكانه.</h2>
+  <p>يسعدنا عرض النظام عليكم مباشرة.</p>
 </section>
 </main>
 
-<footer><div class="wrap"><span>© 2026 زياد مياجان. جميع الحقوق محفوظة.</span><span>الصور من نسخة تجريبية ببيانات وهمية.</span></div></footer>
+<footer><div class="wrap"><span>© 2026 زياد مياجان. جميع الحقوق محفوظة.</span><span>الصور من نسخة تجريبية ببيانات افتراضية.</span></div></footer>
+<script>
+(function(){var v=document.getElementById('film-video'),b=document.getElementById('play'),l=document.getElementById('play-label');
+if(!v||!b)return;b.addEventListener('click',function(){v.controls=true;v.play();b.remove();if(l)l.remove();});})();
+</script>
 </body>
 </html>
