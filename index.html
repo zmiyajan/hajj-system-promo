@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>نظام إدارة جوازات الحجاج</title>
+<meta name="description" content="كل جواز في مكانه، من لحظة الاستلام حتى المغادرة.">
+<style>
+@font-face{font-family:"Thmanyah Serif";src:url(assets/fonts/thmanyahserifdisplay-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url(assets/fonts/thmanyahsans-Regular.woff2) format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url(assets/fonts/thmanyahsans-Medium.woff2) format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"Thmanyah Sans";src:url(assets/fonts/thmanyahsans-Bold.woff2) format("woff2");font-weight:700;font-display:swap}
+
+/* Layout: editorial product film page. Video is the hero object; the passport's journey is the spine; one navy band for proof. */
+:root{
+  --navy:#103C68; --deep:#071A33; --ink:#14263A; --muted:#617387; --soft:#8A9AAB;
+  --gold:#B29057; --gold-hi:#C9A86C; --paper:#FBFAF7; --white:#FFFFFF; --line:#E6E2D8; --tint:#F3F5F8;
+  --f-display:"Thmanyah Serif","Noto Naskh Arabic",serif;
+  --f-body:"Thmanyah Sans","Noto Sans Arabic","Segoe UI",Tahoma,sans-serif;
+  --f-mono:ui-monospace,"SF Mono",Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.85;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;margin:0;color:var(--navy);text-wrap:balance}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1180px;margin-inline:auto;padding-inline:max(22px,env(safe-area-inset-left,0px))}
+.num{font-variant-numeric:tabular-nums}
+.kicker{display:flex;align-items:center;gap:12px;font-size:14px;font-weight:500;color:var(--gold);letter-spacing:.02em}
+.kicker::after{content:"";width:48px;height:1px;background:var(--gold);opacity:.6}
+
+header{position:absolute;inset:0 0 auto;z-index:5}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:84px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand svg{width:30px;height:30px;color:var(--gold)}
+.brand b{font-family:var(--f-display);font-size:17px;color:var(--navy)}
+nav{display:flex;gap:28px;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--navy)}
+@media (max-width:760px){nav{display:none}}
+
+.hero{position:relative;padding-top:150px;overflow:hidden;
+  background:radial-gradient(900px 420px at 85% -10%, rgba(178,144,87,.13), transparent 70%),linear-gradient(180deg,#F6F3EC 0%, var(--paper) 62%)}
+.hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;background-image:linear-gradient(to left, rgba(16,60,104,.05) 1px, transparent 1px);background-size:96px 100%}
+.hero .wrap{position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:56px;align-items:end}
+.hero h1{font-size:clamp(44px,7vw,92px);line-height:1.12;letter-spacing:-.01em}
+.hero h1 span{display:block;color:var(--gold)}
+.hero .lede{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:40ch;padding-bottom:10px}
+.proof-line{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-size:15px;color:var(--ink)}
+.proof-line b{font-family:var(--f-display);color:var(--navy);font-size:20px;margin-inline-end:6px}
+@media (max-width:880px){.hero{padding-top:120px}.hero-grid{grid-template-columns:1fr;gap:20px}}
+
+.film{position:relative;margin-top:56px;padding-bottom:96px}
+.film::after{content:"";position:absolute;inset:auto 0 0;height:55%;background:var(--white);z-index:0}
+.screen{position:relative;z-index:1;border-radius:18px;overflow:hidden;background:var(--deep);box-shadow:0 50px 90px -40px rgba(7,26,51,.55),0 0 0 1px rgba(178,144,87,.35)}
+.screen video{display:block;width:100%;aspect-ratio:16/9;background:var(--deep)}
+.film-cap{position:relative;z-index:1;display:flex;justify-content:space-between;gap:16px;margin-top:16px;font-size:14px;color:var(--soft)}
+
+.problem{background:var(--white);padding-block:40px 120px}
+.problem-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:start}
+.problem blockquote{margin:18px 0 0;font-family:var(--f-display);font-size:clamp(28px,3.4vw,44px);line-height:1.45;color:var(--navy)}
+.problem blockquote em{font-style:normal;color:var(--gold)}
+.symptoms{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.symptoms li{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:22px 0;border-bottom:1px solid var(--line)}
+.symptoms i{font-style:normal;font-family:var(--f-display);font-size:22px;color:var(--soft);line-height:1.3}
+.symptoms b{display:block;font-size:19px;color:var(--ink);margin-bottom:2px}
+.symptoms span{color:var(--muted);font-size:16px}
+@media (max-width:880px){.problem-grid{grid-template-columns:1fr;gap:36px}}
+
+.journey{padding-block:120px;background:var(--paper)}
+.journey-head{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:72px;flex-wrap:wrap}
+.journey-head h2{font-size:clamp(32px,4vw,52px);line-height:1.3;margin-top:14px}
+.journey-head p{color:var(--muted);max-width:38ch}
+.step{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:64px;align-items:center;padding-block:44px;border-top:1px solid var(--line)}
+.step:nth-of-type(even){grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr)}
+.step:nth-of-type(even) .copy{order:2}
+.step .n{font-family:var(--f-display);font-size:15px;color:var(--gold);margin-bottom:10px}
+.step h3{font-size:clamp(26px,2.8vw,36px);line-height:1.35;margin-bottom:12px}
+.step p{color:var(--muted);font-size:17px;max-width:42ch}
+.visual{position:relative;border-radius:16px;background:var(--white);border:1px solid var(--line);overflow:hidden;box-shadow:0 30px 60px -40px rgba(7,26,51,.35)}
+.visual.shot img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top right}
+@media (max-width:880px){.step,.step:nth-of-type(even){grid-template-columns:1fr;gap:28px}.step:nth-of-type(even) .copy{order:0}}
+
+.v-scan{padding:44px 40px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:36px;align-items:center;background:linear-gradient(180deg,#FFFFFF,#F7F5EF)}
+.pp{width:150px;height:200px;border-radius:10px;background:linear-gradient(160deg,#16467A,#0C2D52);position:relative;box-shadow:0 18px 30px -16px rgba(7,26,51,.6)}
+.pp::before{content:"";position:absolute;inset:10px;border:1px solid rgba(201,168,108,.45);border-radius:6px}
+.pp::after{content:"جواز سفر";position:absolute;top:26px;inset-inline:0;text-align:center;font-family:var(--f-display);color:var(--gold-hi);font-size:15px}
+.bc{background:#fff;border-radius:10px;padding:18px 18px 12px;border:1px solid var(--line);position:relative;overflow:hidden}
+.bars{height:74px;background:repeating-linear-gradient(90deg,#14263A 0 2px,transparent 2px 4px,#14263A 4px 7px,transparent 7px 9px,#14263A 9px 10px,transparent 10px 14px,#14263A 14px 17px,transparent 17px 18px)}
+.bc code{display:block;text-align:center;font-family:var(--f-mono);letter-spacing:.32em;font-size:15px;color:var(--ink);margin-top:10px;direction:ltr}
+.beam{position:absolute;inset-block:10px;width:2px;background:#E0483E;box-shadow:0 0 12px 2px rgba(224,72,62,.55);inset-inline-start:12%;animation:beam 3.2s ease-in-out infinite}
+@keyframes beam{0%,100%{inset-inline-start:10%}50%{inset-inline-start:88%}}
+.chip{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:14px;font-weight:700;color:#166534;background:#E3F5E9;padding:5px 14px;border-radius:999px}
+.chip::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+@media (max-width:560px){.v-scan{grid-template-columns:1fr;justify-items:center}.pp{width:120px;height:160px}}
+
+.v-drawer{padding:36px}
+.v-drawer .t{display:flex;justify-content:space-between;font-size:14px;color:var(--muted);margin-bottom:16px}
+.v-drawer .t b{font-family:var(--f-display);color:var(--navy);font-size:18px}
+.slots{display:grid;grid-template-columns:repeat(10,minmax(0,1fr));gap:7px}
+.slots span{aspect-ratio:3/4;border-radius:5px;background:#E9EDF2;display:grid;place-items:end center;font-size:10px;color:#8A9AAB;padding-bottom:3px}
+.slots span.on{background:var(--navy);color:#fff;box-shadow:0 0 0 2px var(--gold-hi)}
+.slots span.out{background:#FCE9D7;color:#9A4A12}
+.slots span.mad{background:#ECE6FB;color:#5B3AA8}
+.tag{display:inline-flex;gap:10px;align-items:center;margin-top:18px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 14px;font-size:14px;color:var(--ink);box-shadow:0 10px 24px -16px rgba(7,26,51,.4)}
+.tag b{color:var(--navy)}
+
+.proof{background:var(--deep);color:#E9EEF4;padding-block:110px;position:relative;overflow:hidden}
+.proof::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 360px at 10% 110%, rgba(178,144,87,.18), transparent 70%)}
+.proof .wrap{position:relative}
+.proof h2{color:#fff;font-size:clamp(32px,4vw,52px);margin-top:14px}
+.proof .kicker{color:var(--gold-hi)}
+.proof .kicker::after{background:var(--gold-hi)}
+.figures{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:56px;border-top:1px solid rgba(255,255,255,.12)}
+.figures div{padding:32px 0 0;padding-inline-end:24px}
+.figures div+div{border-inline-start:1px solid rgba(255,255,255,.12);padding-inline-start:32px}
+.figures b{display:block;font-family:var(--f-display);font-size:clamp(44px,6vw,76px);line-height:1.1;color:#fff}
+.figures span{color:#AFC0D2;font-size:16px}
+.voice{margin-top:64px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.voice p{font-family:var(--f-display);font-size:clamp(22px,2.4vw,30px);line-height:1.6;color:#fff}
+.voice p em{font-style:normal;color:var(--gold-hi)}
+.voice small{display:block;color:#AFC0D2;font-size:15px;line-height:1.8;font-family:var(--f-body)}
+@media (max-width:760px){.figures{grid-template-columns:1fr}.figures div+div{border-inline-start:0;padding-inline-start:0;border-top:1px solid rgba(255,255,255,.12)}.figures div{padding-block:24px}.voice{grid-template-columns:1fr;gap:20px}}
+
+.model{padding-block:120px;background:var(--white)}
+.model-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:64px;align-items:center}
+.model h2{font-size:clamp(32px,4vw,52px);line-height:1.3;margin:14px 0 18px}
+.model p{color:var(--muted);max-width:40ch}
+.hub{position:relative;aspect-ratio:1.25/1;max-width:560px;width:100%;margin-inline:auto}
+.hub svg.lines{position:absolute;inset:0;width:100%;height:100%}
+.core{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:132px;height:132px;border-radius:50%;background:var(--navy);display:grid;place-items:center;text-align:center;color:#fff;font-size:14px;box-shadow:0 20px 40px -20px rgba(7,26,51,.7)}
+.core svg{width:38px;height:38px;color:var(--gold-hi);margin:0 auto 4px;display:block}
+.co{position:absolute;width:42%;background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;box-shadow:0 14px 30px -22px rgba(7,26,51,.45)}
+.co b{display:block;font-size:14px;color:var(--navy);margin-bottom:8px}
+.co .row{display:flex;gap:6px}
+.co .row span{font-size:11.5px;padding:3px 8px;border-radius:6px;color:#fff;text-align:center}
+.co .row .s{background:var(--navy);flex:1}
+.c1{top:0;left:0}.c2{top:0;right:0}.c3{bottom:0;left:0}.c4{bottom:0;right:0}
+@media (max-width:880px){.model-grid{grid-template-columns:1fr;gap:40px}}
+@media (max-width:480px){.co{width:46%;padding:10px}.core{width:104px;height:104px;font-size:12px}}
+
+.next{padding-block:100px;background:var(--paper);border-top:1px solid var(--line)}
+.next .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center}
+.next h2{font-size:clamp(28px,3vw,40px);line-height:1.35;margin-top:14px}
+.next p{color:var(--muted)}
+.pill{display:inline-block;font-size:13px;font-weight:700;color:var(--gold);border:1px dashed var(--gold);border-radius:999px;padding:3px 14px}
+@media (max-width:880px){.next .wrap{grid-template-columns:1fr;gap:20px}}
+
+.closing{background:var(--deep);color:#fff;text-align:center;padding-block:110px}
+.closing svg{width:64px;height:64px;color:var(--gold-hi);margin:0 auto 22px;display:block}
+.closing h2{color:#fff;font-size:clamp(30px,4vw,48px)}
+.closing p{color:var(--gold-hi);font-family:var(--f-display);font-size:clamp(18px,2vw,24px);margin-top:10px}
+footer{background:var(--deep);color:#7F93A8;font-size:13.5px;border-top:1px solid rgba(255,255,255,.08)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:22px}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="logo" viewBox="0 0 512 512"><path fill="currentColor" fill-rule="evenodd" d="M 243.300 1.811 C 233.592 5.261, 226.073 12.103, 222.292 20.929 C 221.484 22.815, 216.643 39.915, 211.533 58.929 L 202.243 93.500 245.872 94 L 289.500 94.500 295.500 97.302 C 298.800 98.844, 303.075 101.622, 305 103.476 C 308.019 106.385, 310.614 107.417, 323.886 110.988 L 339.272 115.129 342.386 112.246 C 344.099 110.660, 355.850 99.748, 368.500 87.998 C 381.150 76.247, 392.699 65.543, 394.165 64.211 L 396.829 61.789 404.415 63.577 C 408.587 64.561, 412 65.643, 412 65.982 C 412 66.321, 404.123 79.588, 394.497 95.463 C 384.870 111.338, 377.247 124.581, 377.558 124.891 C 377.868 125.202, 384.243 127.126, 391.725 129.167 L 405.328 132.879 416.190 126.432 L 427.052 119.984 431.776 121.140 C 434.374 121.775, 436.680 122.446, 436.901 122.632 C 437.121 122.817, 433.589 128.572, 429.052 135.421 L 420.803 147.874 421.530 162.937 C 421.929 171.222, 421.948 178, 421.571 178 C 421.194 178, 418.970 177.518, 416.628 176.928 C 412.557 175.903, 412.087 175.367, 405.935 164.742 L 399.500 153.628 387.499 150.460 C 380.898 148.718, 374.453 146.961, 373.176 146.556 L 370.854 145.819 371.577 180.410 C 371.975 199.434, 371.925 215, 371.466 215 C 369.327 215, 358.373 211.590, 357.352 210.606 C 356.720 209.998, 351.206 193.111, 345.098 173.079 C 338.990 153.048, 333.825 136.492, 333.621 136.287 C 332.869 135.536, 317.903 131.763, 317.455 132.212 C 317.199 132.467, 317.105 179.661, 317.245 237.088 L 317.500 341.500 326.292 308.042 C 331.127 289.640, 335.243 274.423, 335.439 274.228 C 336.303 273.364, 351.800 278.361, 351.428 279.384 C 351.204 279.998, 343.506 308.850, 334.320 343.500 L 317.619 406.500 316.991 428.500 C 316.254 454.354, 315.151 458.632, 307.092 466.905 C 297.174 477.088, 292.749 478, 253.284 478 C 236.445 478, 222.860 478.194, 223.097 478.431 C 223.334 478.668, 250.747 486.205, 284.014 495.181 C 341.294 510.635, 344.977 511.499, 353.500 511.481 C 361.368 511.464, 363.165 511.114, 367.786 508.696 C 374.905 504.971, 380.067 500.130, 383.348 494.102 C 386.149 488.955, 443.448 277.610, 442.624 275.463 C 442.404 274.888, 438.752 273.600, 434.509 272.600 C 425.761 270.537, 426.087 271.389, 429.521 259.575 L 431.079 254.215 439.010 256.304 C 443.372 257.452, 447.231 258.102, 447.585 257.748 C 447.939 257.394, 457.913 221.194, 469.749 177.302 C 494.324 86.171, 494.313 86.230, 488.581 74.554 C 484.902 67.061, 478.928 61.045, 471.938 57.793 C 468.947 56.401, 420.600 42.958, 364.500 27.920 C 254.335 -1.613, 253.464 -1.800, 243.300 1.811 M 20 285.986 L 20 461 152.750 460.978 C 279.424 460.957, 285.683 460.872, 289.500 459.119 C 294.258 456.934, 296.390 454.704, 298.462 449.746 C 299.824 446.485, 300 427.766, 300 285.848 L 300 125.631 297.879 121.250 C 296.601 118.610, 294.145 115.801, 291.702 114.184 L 287.647 111.500 153.823 111.236 L 20 110.971 20 285.986 M 138.826 148.970 C 89.797 159.310, 55.833 201.285, 55.959 251.381 C 56.096 305.494, 96.430 349.864, 150.074 354.912 C 201.450 359.746, 247.308 327.464, 261.243 276.654 C 264.234 265.747, 264.472 237.304, 261.659 227 C 253.202 196.030, 235.746 173.562, 208.887 159.079 C 188.381 148.022, 161.627 144.161, 138.826 148.970 M 154.720 168.250 C 148.139 179.571, 143.711 190.207, 140.103 203.356 C 138.946 207.572, 138 211.242, 138 211.511 C 138 211.780, 147.900 212, 160 212 C 172.100 212, 182 211.780, 182 211.511 C 182 206.475, 172.429 181.004, 166.684 170.750 C 163.392 164.875, 162.532 164, 160.046 164 C 157.740 164, 156.714 164.819, 154.720 168.250 M 127.917 170.344 C 109.938 177.740, 94.021 191.251, 85.207 206.596 L 82.103 212 101.422 212 L 120.740 212 121.936 205.919 C 123.312 198.928, 130.178 178.532, 133.054 172.895 C 136.049 167.024, 136.021 167.010, 127.917 170.344 M 185 168.308 C 185 168.552, 186.115 171.273, 187.479 174.356 C 191.185 182.736, 196.516 198.675, 197.980 205.750 L 199.273 212 218.603 212 L 237.933 212 235.763 208.250 C 229.775 197.897, 218.618 185.877, 208.744 179.141 C 201.963 174.514, 185 166.775, 185 168.308 M 329.498 228.311 C 324.724 242.770, 324.840 243.465, 332.348 245.351 C 335.839 246.228, 339.361 247.201, 340.175 247.514 C 341.316 247.951, 342.160 246.200, 343.847 239.894 C 345.053 235.390, 345.918 231.613, 345.769 231.501 C 345.621 231.388, 341.988 230.357, 337.695 229.209 C 331.975 227.680, 329.785 227.440, 329.498 228.311 M 75.670 229.750 C 72.917 234.359, 71.979 255.957, 74.074 266.496 L 75.367 273 96.433 273 L 117.500 273 117.500 251 L 117.500 229 96.809 229 C 85.429 229, 75.916 229.338, 75.670 229.750 M 134.625 232.125 C 134.281 233.844, 134 242.338, 134 251 C 134 259.663, 134.281 268.156, 134.625 269.875 L 135.250 273 159.994 273 L 184.738 273 185.358 269.250 C 185.699 267.188, 185.978 258.975, 185.978 251 C 185.978 243.025, 185.699 234.813, 185.358 232.750 L 184.738 229 159.994 229 L 135.250 229 134.625 232.125 M 202.500 250.981 L 202.500 273 223.590 273 L 244.680 273 245.936 265.967 C 247.502 257.210, 247.398 242.269, 245.722 235 L 244.454 229.500 223.477 229.231 L 202.500 228.962 202.500 250.981 M 361.539 243.232 C 360.518 247.230, 359.520 250.961, 359.321 251.523 C 359.123 252.086, 362.231 253.385, 366.230 254.410 C 370.228 255.435, 373.977 256.453, 374.559 256.671 C 375.156 256.894, 376.398 253.885, 377.404 249.784 C 378.386 245.778, 379.381 242.022, 379.615 241.438 C 379.859 240.830, 376.928 239.612, 372.771 238.593 C 368.772 237.613, 365.026 236.620, 364.447 236.388 C 363.855 236.150, 362.583 239.144, 361.539 243.232 M 395.057 253.236 C 393.855 257.619, 393.014 261.346, 393.186 261.517 C 394.016 262.339, 409.053 265.715, 409.366 265.149 C 410.098 263.827, 413.225 249.892, 412.869 249.539 C 412.666 249.337, 409.067 248.293, 404.870 247.219 L 397.241 245.266 395.057 253.236 M 385.478 289.250 C 384.277 292.517, 337 469.933, 337 471.173 C 337 472.103, 339.702 473.304, 344.834 474.656 L 352.669 476.719 376.806 386.609 C 390.082 337.049, 401.069 295.390, 401.222 294.034 C 401.473 291.810, 400.909 291.400, 395.500 289.864 C 388.116 287.767, 386.069 287.642, 385.478 289.250 M 84.122 294.002 C 91.326 306.822, 104.440 319.818, 117.500 327.082 C 124.378 330.907, 133.737 334.596, 134.536 333.797 C 134.760 333.574, 133.207 329.365, 131.086 324.445 C 128.966 319.525, 125.794 310.325, 124.038 304 C 122.283 297.675, 120.670 291.938, 120.454 291.250 C 120.159 290.307, 115.368 290, 100.967 290 L 81.872 290 84.122 294.002 M 138.410 292.750 C 141.795 307.610, 154.038 335.779, 158.250 338.401 C 160.984 340.102, 163.032 338.157, 167.734 329.393 C 173.427 318.779, 182 295.402, 182 290.489 C 182 290.220, 172.051 290, 159.892 290 L 137.783 290 138.410 292.750 M 199.103 292.250 C 198.636 293.488, 197.939 296.075, 197.553 298 C 196.349 304.003, 190.952 320.151, 187.900 326.881 C 186.295 330.420, 185.181 333.514, 185.424 333.757 C 187.221 335.555, 206.013 325.850, 215.054 318.455 C 224.106 311.051, 237 294.948, 237 291.048 C 237 290.355, 230.724 290, 218.475 290 C 200.182 290, 199.940 290.028, 199.103 292.250 M 73 417 L 73 425 160 425 L 247 425 247 417 L 247 409 160 409 L 73 409 73 417"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg><b>نظام إدارة جوازات الحجاج</b></a>
+    <nav aria-label="أقسام الصفحة">
+      <a href="#film">الفيديو</a>
+      <a href="#journey">رحلة الجواز</a>
+      <a href="#proof">التجربة</a>
+      <a href="#model">نموذج العمل</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <h1>كل جواز في مكانه.<span>من الاستلام حتى المغادرة.</span></h1>
+      <div>
+        <p class="lede">نظام عربي يتابع جوازات الحجاج طوال الموسم: متى استُلم كل جواز، وأين حُفظ، ومن تعامل معه، وإلى أين انتقل.</p>
+        <div class="proof-line"><span><b class="num">≈ 3,000</b>حاج</span><span><b class="num">4</b>موظفين للجوازات</span><span><b>موسم</b>تشغيلي فعلي</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="wrap film" id="film">
+    <div class="screen"><video controls playsinline preload="metadata" poster="assets/video-poster.jpg"><source src="assets/hajj-system-video.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video></div>
+    <div class="film-cap"><span>الفكرة في دقيقتين ونصف: المشكلة، والحل، والتجربة.</span><span>شغّل الصوت</span></div>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="wrap problem-grid">
+    <div>
+      <div class="kicker">المشكلة</div>
+      <blockquote>في كل موسم تستلم الشركة آلاف الجوازات، وكل جواز منها <em>أمانة</em> لا تحتمل الخطأ.</blockquote>
+    </div>
+    <ol class="symptoms">
+      <li><i>١</i><div><b>ملفات متفرقة</b><span>نسخ مختلفة من الكشوف بين الموظفين، ولا مصدر واحد يُعتمد عليه.</span></div></li>
+      <li><i>٢</i><div><b>جواز لا يُعرف مكانه</b><span>البحث عن جواز واحد يعني فتح الأدراج واحداً واحداً.</span></div></li>
+      <li><i>٣</i><div><b>لا أثر لمن غيّر ماذا</b><span>ولا يُعرف من سلّم الجواز، ولا متى، ولا لمن.</span></div></li>
+      <li><i>٤</i><div><b>اعتماد على أشخاص بعينهم</b><span>العمل يحتاج موظفاً متمرساً يعرف «أين كل شيء».</span></div></li>
+    </ol>
+  </div>
+</section>
+
+<section class="journey" id="journey">
+  <div class="wrap">
+    <div class="journey-head">
+      <div><div class="kicker">الحل</div><h2>رحلة الجواز، خطوة بخطوة</h2></div>
+      <p>يتابع النظام الجواز من لحظة استلامه حتى مغادرة صاحبه، وكل خطوة مسجلة باسم من قام بها ووقتها.</p>
+    </div>
+
+    <article class="step">
+      <div class="copy"><div class="n">٠١ · الاستلام</div><h3>مسحٌ واحد، ويُسجَّل الجواز</h3><p>يمسح الموظف باركود رقم الجواز بالقارئ أو بكاميرا الجوال، فيُسجَّل استلامه فوراً ويُطابق مع كشف الحجاج.</p></div>
+      <div class="visual v-scan" aria-hidden="true">
+        <div class="pp"></div>
+        <div><div class="bc"><div class="bars"></div><code>X5223422</code><span class="beam"></span></div><span class="chip">مسجّل</span></div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="copy"><div class="n">٠٢ · الحفظ</div><h3>لكل جواز رقم، ومكان معروف</h3><p>يأخذ كل جواز رقماً لا يتكرر، ومكاناً محدداً في مجموعته ودرجه، فيُعرف مكانه الفعلي في أي لحظة.</p></div>
+      <div class="visual v-drawer" aria-hidden="true">
+        <div class="t"><b>درج 7</b><span>بيانات توضيحية</span></div>
+        <div class="slots">
+          <span>1</span><span>2</span><span>3</span><span>4</span><span class="mad">5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
+          <span>11</span><span>12</span><span class="out">13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span>
+          <span>21</span><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span><span class="on">27</span><span>28</span><span>29</span><span>30</span>
+          <span>31</span><span>32</span><span>33</span><span class="mad">34</span><span>35</span><span>36</span><span>37</span><span>38</span><span>39</span><span>40</span>
+        </div>
+        <div class="tag">رقم <b class="num">27</b> · المجموعة <b class="num">3</b> · <span style="color:#166534">في مكانه</span></div>
+      </div>
+    </article>
+
+    <article class="step">
+      <div class="copy"><div class="n">٠٣ · المتابعة</div><h3>كل ما حدث للجواز، في سجل واحد</h3><p>الإخراج والإعادة، والتنويم والاحتجاز، وبطاقة نسك، والفنادق والرحلات. بحث فوري بالاسم أو رقم الجواز.</p></div>
+      <div class="visual shot"><img src="assets/screens/pilgrims.jpg" alt="سجل الحجاج في النظام" loading="lazy"></div>
+    </article>
+
+    <article class="step">
+      <div class="copy"><div class="n">٠٤ · الترحيل</div><h3>كشوف جاهزة، وتأكيد بالمسح</h3><p>كشوف الحافلات إلى المدينة والمطار تُبنى من بيانات الحجاج، ويُؤكَّد صعود كل راكب بالمسح، مع تعهد استلام وتسليم جاهز للطباعة.</p></div>
+      <div class="visual shot"><img src="assets/screens/transfer-detail.jpg" alt="كشف ترحيل قيد التأكيد" loading="lazy"></div>
+    </article>
+  </div>
+</section>
+
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="kicker">التجربة الميدانية</div>
+    <h2>جُرّب في موسم تشغيلي كامل</h2>
+    <div class="figures">
+      <div><b class="num">≈ 3,000</b><span>حاج أُديرت جوازاتهم بالنظام</span></div>
+      <div><b class="num">4</b><span>موظفين تولّوا ملف الجوازات</span></div>
+      <div><b>موسم</b><span>تشغيل فعلي في أحد مراكز الخدمة</span></div>
+    </div>
+    <div class="voice">
+      <p>موظف جديد لم يعمل في الجوازات من قبل، <em>يتعلّمه بسرعة ويعمل به بثقة.</em></p>
+      <small>أفاد الفريق المشغّل بأن العمل بالنظام كان أسهل وأسرع وأوضح من الإدخال اليدوي، لأن النظام يرشد الموظف في كل خطوة ويقلل فرص الخطأ.</small>
+    </div>
+  </div>
+</section>
+
+<section class="model" id="model">
+  <div class="wrap model-grid">
+    <div>
+      <div class="kicker">نموذج العمل</div>
+      <h2>اشتراك، وتخصيص لكل شركة</h2>
+      <p>تستأجر شركة الحج النظام لموسمها بدلاً من بناء نظام خاص بها، ويُخصَّص حسب طريقة عملها: تقاريرها ونماذجها وإجراءاتها الداخلية.</p>
+    </div>
+    <div class="hub" aria-hidden="true">
+      <svg class="lines" viewBox="0 0 500 400" preserveAspectRatio="none"><g stroke="#C9B48A" stroke-width="1" fill="none"><line x1="250" y1="200" x2="105" y2="45"/><line x1="250" y1="200" x2="395" y2="45"/><line x1="250" y1="200" x2="105" y2="355"/><line x1="250" y1="200" x2="395" y2="355"/></g></svg>
+      <div class="co c1"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span style="background:#B29057">تخصيص</span></div></div>
+      <div class="co c2"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span style="background:#6EA3C2">تخصيص</span></div></div>
+      <div class="co c3"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span style="background:#7A9A6E">تخصيص</span></div></div>
+      <div class="co c4"><b>شركة حج</b><div class="row"><span class="s">اشتراك</span><span style="background:#9A82B8">تخصيص</span></div></div>
+      <div class="core"><div><svg><use href="#logo"/></svg>النظام</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="next">
+  <div class="wrap">
+    <div><span class="pill">التوسع القادم</span><h2>الربط مع المنصات الرسمية</h2></div>
+    <p>من التوسعات المخطط لها الربط مع المنصات الرسمية لوزارة الحج والعمرة عند إتاحتها واعتمادها، لتصل بيانات الحجاج إلى النظام دون ملفات يدوية.</p>
+  </div>
+</section>
+
+<section class="closing">
+  <svg aria-hidden="true"><use href="#logo"/></svg>
+  <h2>نظام إدارة جوازات الحجاج</h2>
+  <p>كل جواز في مكانه.</p>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© 2026 زياد مياجان. جميع الحقوق محفوظة.</span><span>الصور من نسخة تجريبية ببيانات وهمية.</span></div></footer>
+</body>
+</html>
