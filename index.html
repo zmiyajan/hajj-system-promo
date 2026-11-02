@@ -320,6 +320,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 footer .fb{display:inline-flex;align-items:center;gap:8px}
 footer .fb svg{width:16px;height:16px;color:#7F93A8}
 
+.totop{position:fixed;bottom:22px;inset-inline-end:22px;z-index:30;width:44px;height:44px;border-radius:50%;border:1px solid rgba(16,60,104,.12);background:rgba(255,255,255,.92);color:var(--navy);display:grid;place-items:center;cursor:pointer;box-shadow:0 6px 18px rgba(16,60,104,.12);opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease,visibility .35s}
+.totop.show{opacity:1;visibility:visible;transform:none}
+.totop svg{width:18px;height:18px}
+@media (hover:hover){.totop:hover{background:#fff}}
+@media (max-width:560px){.totop{bottom:16px;inset-inline-end:16px;width:42px;height:42px}}
+
 @media (max-width:900px) and (max-height:700px){.stage{aspect-ratio:1/.7}.texts{min-height:180px}.step p{font-size:15px}}
 
 @media (prefers-reduced-motion:reduce){
@@ -538,6 +544,8 @@ footer .fb svg{width:16px;height:16px;color:#7F93A8}
 </section>
 </main>
 
+<button class="totop" id="totop" type="button" aria-label="العودة إلى أعلى الصفحة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
+
 <footer><div class="wrap"><span class="fb"><svg aria-hidden="true"><use href="#logo"/></svg>© 2026 زياد مياجان. جميع الحقوق محفوظة.</span><span>الصور من نسخة تجريبية ببيانات افتراضية.</span></div></footer>
 
 <script>
@@ -671,6 +679,12 @@ document.querySelectorAll('[data-count]').forEach(function(el){co.observe(el);})
 var tabs=[].slice.call(document.querySelectorAll('[role=tab]'));
 function sel(t){tabs.forEach(function(b){var on=b===t;b.setAttribute('aria-selected',on);b.tabIndex=on?0:-1;document.getElementById(b.getAttribute('aria-controls')).classList.toggle('on',on);});}
 tabs.forEach(function(t,i){t.addEventListener('click',function(){sel(t);});t.addEventListener('keydown',function(e){var d=e.key==='ArrowLeft'?1:e.key==='ArrowRight'?-1:0;if(d){var n=tabs[(i+d+tabs.length)%tabs.length];sel(n);n.focus();}});});
+
+/* back to top */
+var tt=document.getElementById('totop');
+if(tt){var ttOn=false,ttUpd=function(){var on=scrollY>innerHeight*.9;if(on!==ttOn){ttOn=on;tt.classList.toggle('show',on);}};
+  addEventListener('scroll',ttUpd,{passive:true});ttUpd();
+  tt.addEventListener('click',function(){window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});});}
 
 /* film */
 var v=document.getElementById('film-video'),b=document.getElementById('play');
