@@ -169,12 +169,61 @@ nav a:hover{color:var(--navy)}
 .next p{color:var(--muted)}
 @media (max-width:880px){.next .wrap{grid-template-columns:1fr;gap:20px}}
 
+
+/* contact */
+.form{display:grid;gap:14px;padding:28px;border:1px solid var(--line);border-radius:16px;background:var(--paper)}
+.form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form label{display:grid;gap:6px;font-size:14px;color:var(--muted)}
+.form input,.form textarea{font:inherit;font-size:16px;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 14px;width:100%}
+.form textarea{min-height:110px;resize:vertical}
+.form input:focus,.form textarea:focus{outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(178,144,87,.15)}
+.form .btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+.form button{font:inherit;font-weight:700;font-size:15.5px;border:0;border-radius:10px;padding:13px 22px;cursor:pointer;display:inline-flex;align-items:center;gap:8px}
+.form .b-wa{background:#1F7A4D;color:#fff}
+.form .b-mail{background:var(--navy);color:#fff}
+.form .note{font-size:13px;color:var(--soft)}
+.form .err{font-size:14px;color:#9B2C2C;min-height:1em}
+.direct{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:22px;font-size:15px}
+.direct a{color:var(--navy);border-bottom:1px solid var(--line)}
+.direct span{direction:ltr;unicode-bidi:isolate}
+@media (max-width:560px){.form{padding:20px}.form .two{grid-template-columns:1fr}.form button{flex:1;justify-content:center}}
+
+.contact{background:var(--white);padding-block:110px;border-top:1px solid var(--line)}
+.contact-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.contact h2{font-size:clamp(30px,3.6vw,46px);line-height:1.3;margin:14px 0 16px}
+.contact p{color:var(--muted);max-width:42ch}
+.reach{display:grid;gap:14px}
+.reach a{display:flex;align-items:center;gap:16px;padding:20px 22px;border:1px solid var(--line);border-radius:14px;background:var(--paper);transition:border-color .2s,transform .2s}
+.reach a:hover{border-color:var(--gold);transform:translateY(-2px)}
+.reach .ic{flex:none;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;background:var(--navy);color:#fff}
+.reach .ic svg{width:24px;height:24px}
+.reach .ic.wa{background:#1F7A4D}
+.reach b{display:block;color:var(--navy);font-size:17px}
+.reach span{display:block;color:var(--muted);font-size:15px;direction:ltr;text-align:right;user-select:all}
+@media (max-width:880px){.contact-grid{grid-template-columns:1fr;gap:32px}}
 .closing{background:var(--deep);color:#fff;text-align:center;padding-block:110px}
 .closing svg{width:64px;height:64px;color:var(--gold-hi);margin:0 auto 22px;display:block}
 .closing h2{color:#fff;font-size:clamp(30px,4vw,48px)}
 .closing p{color:var(--gold-hi);font-family:var(--f-display);font-size:clamp(18px,2vw,24px);margin-top:10px}
 footer{background:var(--deep);color:#7F93A8;font-size:13.5px;border-top:1px solid rgba(255,255,255,.08)}
 footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding-block:22px}
+
+/* private co-brand */
+.brand-row{display:flex;align-items:center;gap:18px}
+.brand-row i{width:1px;height:30px;background:var(--line)}
+.brand-row img{height:38px;width:auto}
+.partner{background:var(--white);padding-block:110px;border-top:1px solid var(--line);text-align:center}
+.partner .kicker{justify-content:center}
+.partner .kicker::before{content:"";width:48px;height:1px;background:var(--gold);opacity:.6}
+.partner h2{font-size:clamp(28px,3.4vw,42px);line-height:1.35;margin:14px auto 40px;max-width:24ch}
+.lockup{display:inline-flex;align-items:center;gap:56px;padding:44px 64px;border:1px solid var(--line);border-radius:20px;background:var(--paper)}
+.lockup .ours{display:flex;flex-direction:column;align-items:center;gap:14px}
+.lockup .ours svg{width:72px;height:72px;color:var(--gold)}
+.lockup .ours b{font-family:var(--f-display);font-size:24px;color:var(--navy)}
+.lockup i{width:1px;align-self:stretch;background:var(--line)}
+.lockup img{width:190px;height:auto}
+.partner .fine{margin:26px auto 0;max-width:52ch;font-size:14px;color:var(--soft)}
+@media (max-width:640px){.lockup{flex-direction:column;gap:26px;padding:32px 28px}.lockup i{width:60%;height:1px;align-self:center}.brand-row img{height:30px}.brand-row b{display:none}}
 </style>
 </head>
 <body>
@@ -184,7 +233,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
 
 <header>
   <div class="wrap">
-    <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg><b>نظام إدارة جوازات الحجاج</b></a>
+    <div class="brand-row"><a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg><b>نظام إدارة جوازات الحجاج</b></a><i aria-hidden="true"></i><img src="assets/arcom-logo.png" alt="شعار آركوم"></div>
     <nav aria-label="أقسام الصفحة">
       <a href="#film">الفيديو</a>
       <a href="#journey">رحلة الجواز</a>
@@ -206,7 +255,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     </div>
   </div>
   <div class="wrap film" id="film">
-    <div class="screen"><video id="film-video" playsinline preload="metadata" poster="assets/video-poster.jpg"><source src="assets/hajj-system-video.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video><button class="play" id="play" aria-label="تشغيل الفيديو"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button><span class="play-label" id="play-label">شاهد الفكرة في دقيقتين ونصف</span></div>
+    <div class="screen"><video id="film-video" playsinline preload="metadata" poster="assets/video-poster.jpg"><source src="assets/hajj-system-video-arcom.mp4" type="video/mp4">متصفحك لا يدعم تشغيل الفيديو.</video><button class="play" id="play" aria-label="تشغيل الفيديو"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l13-7.5z"/></svg></button><span class="play-label" id="play-label">شاهد الفكرة في دقيقتين ونصف</span></div>
     <div class="film-cap"><span>الفكرة في دقيقتين ونصف، من المشكلة إلى التجربة الميدانية.</span><span>يُفضَّل التشغيل مع الصوت</span></div>
   </div>
 </section>
@@ -308,10 +357,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   </div>
 </section>
 
+<section class="partner" id="partner">
+  <div class="wrap">
+    <div class="kicker">شراكة</div>
+    <h2>بالتعاون مع آركوم</h2>
+    <div class="lockup">
+      <div class="ours"><svg aria-hidden="true"><use href="#logo"/></svg><b>نظام إدارة جوازات الحجاج</b></div>
+      <i></i>
+      <img src="assets/arcom-logo.png" alt="شعار آركوم">
+    </div>
+  </div>
+</section>
+
 <section class="closing">
   <svg aria-hidden="true"><use href="#logo"/></svg>
   <h2>كل جواز في مكانه.</h2>
-  <p>يسعدنا عرض النظام عليكم مباشرة.</p>
+  <p>من الاستلام حتى مغادرة الحاج.</p>
 </section>
 </main>
 
