@@ -95,7 +95,8 @@ nav .btn{padding:10px 18px;font-size:14.5px}
 .chip.c2{top:56%;inset-inline-end:-4%}
 #drawer-out{animation:pull 1.6s 0.5s cubic-bezier(.2,.8,.2,1) both}
 @keyframes pull{from{transform:translate(var(--px),var(--py))}to{transform:none}}
-@media (max-width:900px){.hero{padding:120px 0 80px}.hero-grid{grid-template-columns:1fr}.art{max-width:400px;margin-top:20px}.chip{font-size:12.5px;padding:7px 12px}}
+@media (max-width:900px){.hero{padding:116px 0 64px}.hero-grid{grid-template-columns:1fr;gap:8px}.art{max-width:330px;margin-top:8px}.chip{font-size:12.5px;padding:7px 12px}.chip.c1{top:20%;inset-inline-start:0}.chip.c2{top:58%;inset-inline-end:0}}
+@media (max-width:560px){.hero h1{font-size:44px}.hero .lead{font-size:16.5px;margin-top:18px}.hero .ctas{margin-top:28px}.hero .ctas .btn{flex:1;justify-content:center;padding:14px 16px}.hero .proofline{margin-top:24px;font-size:14px}.art{max-width:290px}}
 
 /* problem */
 .problem{padding:140px 0 120px}
@@ -104,7 +105,12 @@ nav .btn{padding:10px 18px;font-size:14.5px}
 .pain .pn{font-family:var(--f-display);font-size:15px;color:var(--gold)}
 .pain h3{font-size:24px;margin-top:10px}
 .pain p{color:var(--muted);margin-top:10px;font-size:16.5px}
-@media (max-width:900px){.problem{padding:100px 0 80px}.pains{grid-template-columns:1fr;gap:34px;margin-top:48px}}
+.outcomes{padding:130px 0;background:var(--paper);border-top:1px solid var(--line)}
+.pains.four{grid-template-columns:repeat(4,minmax(0,1fr));gap:36px}
+.pains.four h3{font-size:21px}
+@media (max-width:1100px){.pains.four{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:900px){.problem{padding:100px 0 80px}.pains,.pains.four{grid-template-columns:1fr;gap:34px;margin-top:48px}}
+@media (max-width:900px){.outcomes{padding:96px 0}}
 
 /* story — scroll-scrubbed: every state below is a pure function of scroll position,
    so scrolling up plays the same sequence back in exact reverse. */
@@ -192,6 +198,9 @@ nav .btn{padding:10px 18px;font-size:14.5px}
   .texts{min-height:210px}
   .step h3{font-size:25px}
   .step p{font-size:16px;margin-top:8px}
+  .bus{width:76cqw;margin-left:-38cqw}
+  .log{width:78cqw;inset-inline-start:11cqw}
+  .result{font-size:max(11px,2.6cqw)}
 }
 
 /* film */
@@ -229,13 +238,13 @@ nav .btn{padding:10px 18px;font-size:14.5px}
 .figs{display:grid;grid-template-columns:repeat(3,1fr);margin-top:56px;border-top:1px solid rgba(255,255,255,.14)}
 .figs div{padding:34px 0;padding-inline-end:24px}
 .figs div+div{border-inline-start:1px solid rgba(255,255,255,.14);padding-inline-start:34px}
-.figs b{display:block;font-family:var(--f-display);font-size:clamp(54px,7vw,96px);line-height:1.05;color:var(--gold-hi)}
+.figs b{display:block;white-space:nowrap;font-family:var(--f-display);font-size:clamp(54px,7vw,96px);line-height:1.05;color:var(--gold-hi)}
 .figs span{color:rgba(255,255,255,.72)}
 .quote{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:40px;margin-top:30px;padding-top:40px;border-top:1px solid rgba(255,255,255,.14)}
 .quote p{font-family:var(--f-display);font-size:clamp(22px,2.4vw,30px);line-height:1.6}
 .quote p em{font-style:normal;color:var(--gold-hi)}
 .quote small{display:block;color:rgba(255,255,255,.55);font-size:14px;margin-top:10px;font-family:var(--f-body)}
-@media (max-width:760px){.figs{grid-template-columns:1fr}.figs div+div{border-inline-start:0;padding-inline-start:0;border-top:1px solid rgba(255,255,255,.14)}.quote{grid-template-columns:1fr}}
+@media (max-width:760px){.proof{padding:96px 0}.figs{grid-template-columns:1fr;margin-top:36px}.figs div{padding:22px 0;display:flex;align-items:baseline;gap:16px}.figs b{font-size:52px}.figs div+div{border-inline-start:0;padding-inline-start:0;border-top:1px solid rgba(255,255,255,.14)}.quote{grid-template-columns:1fr;gap:28px}}
 
 /* bento */
 .bento{padding:120px 0}
@@ -432,6 +441,35 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
   </div>
 </section>
 
+<section class="outcomes">
+  <div class="wrap">
+    <div class="kicker rv">ما الذي يتغيّر</div>
+    <h2 class="h2 rv">أثر واضح على العمل اليومي</h2>
+    <div class="pains four">
+      <div class="pain rv"><span class="pn">01</span><h3>اعتماد أقل على الخبرة السابقة</h3><p>الخطوات واضحة في النظام، فيعمل بها الموظف الجديد بعد تدريب قصير.</p></div>
+      <div class="pain rv d1"><span class="pn">02</span><h3>جواب فوري عن أي جواز</h3><p>مكان الجواز وحالته يظهران بالبحث، دون الرجوع إلى شخص بعينه.</p></div>
+      <div class="pain rv d2"><span class="pn">03</span><h3>متابعة دون سؤال</h3><p>الإدارة ترى حالة الموسم من لوحة المؤشرات في أي وقت.</p></div>
+      <div class="pain rv d3"><span class="pn">04</span><h3>مسؤولية موثّقة</h3><p>كل عملية مسجّلة باسم من قام بها ووقتها، ويُرجع إليها عند الحاجة.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="kicker rv">التجربة الميدانية</div>
+    <h2 class="h2 rv">جُرِّب في موسم حج فعلي</h2>
+    <div class="figs">
+      <div class="rv"><b class="num" data-count="3000" data-prefix="≈ ">≈ 3,000</b><span>حاج أُديرت جوازاتهم بالنظام</span></div>
+      <div class="rv d1"><b class="num">4</b><span>موظفين تولّوا ملف الجوازات</span></div>
+      <div class="rv d2"><b class="num">1</b><span>موسم تشغيل فعلي</span></div>
+    </div>
+    <div class="quote">
+      <p class="rv">«أسهل وأسرع وأوضح من الإدخال اليدوي.»<small>انطباع الفريق المشغّل خلال موسم التجربة</small></p>
+      <p class="rv d1">ومن ملاحظات التجربة: موظف جديد لم يعمل في الجوازات من قبل <em>تعلّم النظام بسرعة.</em></p>
+    </div>
+  </div>
+</section>
+
 <section class="film" id="film">
   <div class="wrap">
     <div class="film-head">
@@ -462,22 +500,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
     <div class="role" id="r3" role="tabpanel" aria-labelledby="t3">
       <ol><li><i>1</i><div><b>لوحة مؤشرات للموسم</b><span>الأعداد والحالات في نظرة واحدة.</span></div></li><li><i>2</i><div><b>صلاحيات لكل مستخدم</b><span>كل موظف يصل إلى ما تسمح به صلاحياته.</span></div></li><li><i>3</i><div><b>تقارير وتصدير</b><span>تقارير الموسم، وتصدير البيانات إلى إكسل.</span></div></li></ol>
       <div><div class="frame"><div class="tb"><i></i><i></i><i></i></div><img src="assets/screens/dashboard.jpg" alt="لوحة التحكم" loading="lazy" width="1600" height="1000"></div><p class="cap">لقطة حقيقية من النظام ببيانات افتراضية.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="proof" id="proof">
-  <div class="wrap">
-    <div class="kicker rv">التجربة الميدانية</div>
-    <h2 class="h2 rv">جُرِّب في موسم حج فعلي</h2>
-    <div class="figs">
-      <div class="rv"><b class="num" data-count="3000" data-prefix="≈ ">≈ 3,000</b><span>حاج أُديرت جوازاتهم بالنظام</span></div>
-      <div class="rv d1"><b class="num">4</b><span>موظفين تولّوا ملف الجوازات</span></div>
-      <div class="rv d2"><b class="num">1</b><span>موسم تشغيل فعلي</span></div>
-    </div>
-    <div class="quote">
-      <p class="rv">«أسهل وأسرع وأوضح من الإدخال اليدوي.»<small>انطباع الفريق المشغّل خلال موسم التجربة</small></p>
-      <p class="rv d1">ومن ملاحظات التجربة: موظف جديد لم يعمل في الجوازات من قبل <em>تعلّم النظام بسرعة.</em></p>
     </div>
   </div>
 </section>
