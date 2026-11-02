@@ -72,13 +72,12 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 .brand svg{width:24px;height:24px;color:var(--gold-hi)}
 .brand b{font-family:var(--f-display);font-size:16px}
 .brand-row i{width:1px;height:28px;background:rgba(255,255,255,.25)}
-.brand-row .arcom{background:#fff;border-radius:8px;padding:4px 8px;height:38px;display:flex;align-items:center}
-.brand-row .arcom img{height:28px;width:auto}
+.brand-row .arcom-w{height:30px;width:auto;opacity:.92}
 nav{display:flex;align-items:center;gap:28px;font-size:15px;color:rgba(255,255,255,.82)}
 nav a:hover{color:#fff}
 nav .btn{padding:10px 18px;font-size:14.5px}
 @media (max-width:900px){nav a:not(.btn){display:none}}
-@media (max-width:560px){.brand b{font-size:14px}nav .btn{display:none}}
+@media (max-width:560px){.brand b{font-size:14px}nav .btn{display:none}.brand-row{gap:12px}.brand-row i{height:24px}.brand-row .arcom-w{height:25px}}
 
 /* hero */
 .hero{position:relative;background:radial-gradient(120% 90% at 20% 30%,#13406B 0%,var(--night) 50%,var(--abyss) 100%);color:#fff;overflow:hidden;padding:136px 0 96px}
@@ -351,6 +350,8 @@ footer .fb svg{width:16px;height:16px;color:#7F93A8}
   <div class="wrap">
     <div class="brand-row">
       <a class="brand" href="#top"><svg aria-hidden="true"><use href="#logo"/></svg><b>نظام إدارة جوازات الحجاج</b></a>
+      <i aria-hidden="true"></i>
+      <img class="arcom-w" src="assets/arcom-logo-white.png" alt="آركوم" width="57" height="30">
     </div>
     <nav aria-label="أقسام الصفحة">
       <a href="#story">كيف يعمل</a>
