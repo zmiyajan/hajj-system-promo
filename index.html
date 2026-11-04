@@ -375,6 +375,14 @@ footer .fb svg{width:16px;height:16px;color:#7F93A8}
 .totop svg{width:18px;height:18px}
 @media (hover:hover){.totop:hover{background:#fff}}
 @media (max-width:560px){.totop{bottom:16px;inset-inline-end:16px;width:42px;height:42px}}
+/* floating contact */
+.fab{position:fixed;bottom:22px;inset-inline-start:22px;z-index:30;display:inline-flex;align-items:center;gap:9px;height:48px;padding:0 20px 0 18px;border-radius:99px;background:var(--gold);color:#1B1408;font-weight:700;font-size:15px;box-shadow:0 10px 26px rgba(7,28,53,.28);opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .35s ease,transform .35s ease,visibility .35s,background-color .2s}
+.fab svg{width:18px;height:18px;flex:none}
+.fab.show{opacity:1;visibility:visible;transform:none}
+@media (hover:hover){.fab:hover{background:var(--gold-hi)}}
+.fab:focus-visible{outline:3px solid var(--navy);outline-offset:3px}
+@media (max-width:560px){.fab{bottom:16px;inset-inline-start:16px;height:44px;padding:0 16px;font-size:14.5px}}
+@media (prefers-reduced-motion:reduce){.fab{transition:none}}
 
 @media (max-width:900px) and (max-height:700px){.stage{aspect-ratio:1/.7}.texts{min-height:180px}.step p{font-size:15px}}
 
@@ -655,6 +663,7 @@ footer .fb svg{width:16px;height:16px;color:#7F93A8}
 </section>
 </main>
 
+<a class="fab" id="fab" href="#contact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8.5 8.5 0 0 1-12.6 7.4L3 21l1.6-5.2A8.5 8.5 0 1 1 21 12z"/></svg>تواصل معنا</a>
 <button class="totop" id="totop" type="button" aria-label="العودة إلى أعلى الصفحة"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></button>
 
 <footer><div class="wrap"><span class="fb"><svg aria-hidden="true"><use href="#logo"/></svg>© 2026 نظام إدارة جوازات الحجاج. جميع الحقوق محفوظة.</span><span>الصور من نسخة تجريبية ببيانات افتراضية.</span></div></footer>
@@ -804,6 +813,15 @@ if(v&&b)b.addEventListener('click',function(){v.controls=true;v.play();b.remove(
 })();
 </script>
 <script>
+/* floating contact button: shows after the hero, hides while the form is on screen */
+(() => {
+  const fab = document.getElementById('fab'), hero = document.querySelector('.hero'), form = document.getElementById('contact');
+  if (!fab || !hero || !form || !('IntersectionObserver' in window)) { fab && fab.classList.add('show'); return; }
+  let pastHero = false, atForm = false;
+  const sync = () => fab.classList.toggle('show', pastHero && !atForm);
+  new IntersectionObserver(([e]) => { pastHero = !e.isIntersecting; sync(); }).observe(hero);
+  new IntersectionObserver(([e]) => { atForm = e.isIntersecting; sync(); }, { threshold: 0.15 }).observe(form);
+})();
 /* contact form — posts to FormSubmit (no account needed); messages arrive by email */
 (() => {
   const f = document.getElementById('cform'); if (!f) return;
