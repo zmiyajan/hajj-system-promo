@@ -339,6 +339,24 @@ nav .btn{padding:10px 18px;font-size:14.5px}
 .form .b-wa{background:var(--ok)}.form .b-mail{background:var(--navy)}
 .form .note{font-size:13px;color:var(--soft)}
 .form .err{font-size:14px;color:#9B2C2C;min-height:1em}
+.form .req{color:var(--gold)}
+.form input[dir=ltr]{text-align:right}
+.form .send{background:var(--navy);width:100%;display:inline-flex;align-items:center;justify-content:center;gap:10px}
+.form .send:disabled{opacity:.7;cursor:progress}
+.form .hp{position:absolute;inset-inline-start:-9999px;width:1px;height:1px;overflow:hidden}
+.contact h2{margin-top:10px}
+.contact .lede{color:var(--muted);font-size:17px;margin-top:14px;max-width:460px;text-wrap:pretty}
+.nexts{display:grid;gap:16px;margin-top:30px;padding:0;list-style:none}
+.nexts li{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.nexts b{width:34px;height:34px;border-radius:50%;background:var(--navy);color:var(--gold-hi);display:grid;place-items:center;font-family:var(--f-display);font-size:15px}
+.nexts h4{margin:4px 0 0;font-size:16px;color:var(--ink)}
+.nexts p{font-size:14.5px;color:var(--muted);margin-top:2px}
+.sent{display:none;text-align:center;padding:30px 10px}
+.sent .tick{width:56px;height:56px;border-radius:50%;background:rgba(31,138,91,.12);color:var(--ok);display:grid;place-items:center;margin:0 auto 14px}
+.sent .tick svg{width:26px;height:26px}
+.sent h3{font-size:22px}
+.sent p{color:var(--muted);margin-top:8px}
+.form.done .fields{display:none}.form.done .sent{display:block}
 @media (max-width:900px){.cgrid{grid-template-columns:1fr;gap:36px}}
 @media (max-width:560px){.form{padding:22px}.form .two{grid-template-columns:1fr}.form button{flex:1}}
 
@@ -388,7 +406,7 @@ footer .fb svg{width:16px;height:16px;color:#7F93A8}
       <a href="#proof">التجربة</a>
       <a href="#suite">النظام</a>
       <a href="#features">المزايا</a>
-      <a class="btn btn-gold" href="#film">شاهد الفيديو</a>
+      <a class="btn btn-gold" href="#contact">تواصل معنا</a>
     </nav>
   </div>
 </header>
@@ -593,10 +611,47 @@ footer .fb svg{width:16px;height:16px;color:#7F93A8}
 </section>
 
 
+<section class="contact" id="contact">
+  <div class="wrap cgrid">
+    <div>
+      <div class="kicker rv">تواصل معنا</div>
+      <h2 class="h2 rv">نجهّز النظام لشركتك</h2>
+      <p class="lede rv d1">اترك بياناتك، ونتواصل معك لعرض النظام عملياً ومناقشة احتياج شركتك قبل الموسم.</p>
+      <ol class="nexts rv d2">
+        <li><b>1</b><div><h4>عرض مباشر</h4><p>نعرض لك النظام على بيانات تجريبية، خطوة بخطوة.</p></div></li>
+        <li><b>2</b><div><h4>تخصيص لشركتك</h4><p>نضبط التقارير والنماذج والإجراءات حسب طريقة عملكم.</p></div></li>
+        <li><b>3</b><div><h4>تشغيل وتدريب</h4><p>نجهّز النظام وندرّب فريقك قبل وصول الحجاج.</p></div></li>
+      </ol>
+    </div>
+    <form class="form rv d1" id="cform" novalidate>
+      <div class="fields">
+        <div class="two">
+          <label><span>الاسم <span class="req">*</span></span><input name="name" autocomplete="name" required maxlength="80"></label>
+          <label>الشركة أو الجهة<input name="company" autocomplete="organization" maxlength="120"></label>
+        </div>
+        <div class="two">
+          <label>رقم الجوال<input name="phone" type="tel" dir="ltr" inputmode="tel" autocomplete="tel" placeholder="05xxxxxxxx" maxlength="20"></label>
+          <label>البريد الإلكتروني<input name="email" type="email" dir="ltr" autocomplete="email" maxlength="120"></label>
+        </div>
+        <label>رسالتك<textarea name="message" maxlength="2000" placeholder="مثال: عدد الحجاج لدينا تقريباً، وموعد مناسب للعرض."></textarea></label>
+        <label class="hp" aria-hidden="true">اترك هذا الحقل فارغاً<input name="_honey" tabindex="-1" autocomplete="off"></label>
+        <p class="err" id="cerr" role="alert"></p>
+        <button class="send" type="submit" id="csend">أرسل الطلب</button>
+        <p class="note">نستخدم بياناتك للتواصل معك بخصوص النظام فقط.</p>
+      </div>
+      <div class="sent" role="status" aria-live="polite">
+        <div class="tick"><svg viewBox="0 0 24 24"><use href="#i-check"/></svg></div>
+        <h3>وصلنا طلبك، شكراً لك</h3>
+        <p>نتواصل معك قريباً.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
 <section class="closing">
   <h2 class="rv">كل جواز في مكانه.</h2>
   <p class="rv d1">من الاستلام حتى مغادرة الحاج.</p>
-  <a class="btn btn-gold rv d2" href="#film">شاهد الفيديو</a>
+  <a class="btn btn-gold rv d2" href="#contact">اطلب عرضاً للنظام</a>
 </section>
 </main>
 
@@ -746,6 +801,39 @@ if(tt){var ttOn=false,ttUpd=function(){var on=scrollY>innerHeight*.9;if(on!==ttO
 /* film */
 var v=document.getElementById('film-video'),b=document.getElementById('play');
 if(v&&b)b.addEventListener('click',function(){v.controls=true;v.play();b.remove();});
+})();
+</script>
+<script>
+/* contact form — posts to FormSubmit (no account needed); messages arrive by email */
+(() => {
+  const f = document.getElementById('cform'); if (!f) return;
+  const err = document.getElementById('cerr'), btn = document.getElementById('csend');
+  const el = (n) => f.elements.namedItem(n);
+  const to = ['ziyad', 'zm.sa'].join('@');
+  f.addEventListener('submit', async (e) => {
+    e.preventDefault(); err.textContent = '';
+    const d = Object.fromEntries(new FormData(f));
+    if (d._honey) return;
+    const name = (d.name || '').trim(), phone = (d.phone || '').trim(), email = (d.email || '').trim();
+    if (!name) { err.textContent = 'اكتب اسمك من فضلك.'; el('name').focus(); return; }
+    if (!phone && !email) { err.textContent = 'اكتب رقم الجوال أو البريد الإلكتروني لنتواصل معك.'; el('phone').focus(); return; }
+    if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { err.textContent = 'البريد الإلكتروني غير صحيح.'; el('email').focus(); return; }
+    if (phone && !/^[+0-9\s-]{8,20}$/.test(phone)) { err.textContent = 'رقم الجوال غير صحيح.'; el('phone').focus(); return; }
+    btn.disabled = true; btn.textContent = 'جارٍ الإرسال…';
+    try {
+      const r = await fetch('https://formsubmit.co/ajax/' + to, {
+        method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ 'الاسم': name, 'الشركة': (d.company || '').trim(), 'الجوال': phone, 'البريد': email, 'الرسالة': (d.message || '').trim(),
+          _replyto: email || undefined, _subject: 'طلب تواصل جديد — نظام إدارة جوازات الحجاج', _template: 'table', _captcha: 'false' })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok || String(j.success) === 'false') throw new Error(j.message || r.status);
+      f.classList.add('done');
+    } catch (_) {
+      err.textContent = 'تعذّر الإرسال الآن. حاول مرة أخرى بعد قليل.';
+      btn.disabled = false; btn.textContent = 'أرسل الطلب';
+    }
+  });
 })();
 </script>
 </body>
