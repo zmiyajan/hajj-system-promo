@@ -6,11 +6,11 @@
 <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>نظام إدارة جوازات الحجاج</title>
-<meta name="description" content="آلاف الجوازات، وكل جواز تعرف مكانه: من استلامه حتى مغادرة الحاج.">
+<meta name="description" content="منصة عربية متكاملة لإدارة جوازات الحجاج طوال الموسم: الاستلام والحفظ، متابعة الحاج، الترحيل والرحلات، والتقارير.">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ar_SA">
 <meta property="og:title" content="نظام إدارة جوازات الحجاج">
-<meta property="og:description" content="آلاف الجوازات، وكل جواز تعرف مكانه: من استلامه حتى مغادرة الحاج.">
+<meta property="og:description" content="منصة عربية متكاملة لإدارة جوازات الحجاج طوال الموسم: الاستلام والحفظ، متابعة الحاج، الترحيل والرحلات، والتقارير.">
 <meta property="og:url" content="https://zmiyajan.github.io/hajj-system-promo/">
 <meta property="og:image" content="https://zmiyajan.github.io/hajj-system-promo/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
@@ -77,7 +77,8 @@ header .wrap{display:flex;align-items:center;justify-content:space-between;heigh
 nav{display:flex;align-items:center;gap:28px;font-size:15px;color:rgba(255,255,255,.82)}
 nav a:hover{color:#fff}
 nav .btn{padding:10px 18px;font-size:14.5px}
-@media (max-width:900px){nav a:not(.btn){display:none}}
+@media (max-width:1240px){nav{gap:20px}}
+@media (max-width:1100px){nav a:not(.btn){display:none}}
 @media (max-width:560px){.brand b{font-size:14px}nav .btn{display:none}.brand-row{gap:12px}.brand-row i{height:24px}.brand-row .moh-w{height:32px}.brand-row .arcom-w,.brand-row .i2{display:none}}
 
 /* hero */
@@ -279,6 +280,26 @@ nav .btn{padding:10px 18px;font-size:14.5px}
 @media (max-width:900px){.bgrid{grid-template-columns:1fr 1fr}.bx,.bx.w3{grid-column:span 1}}
 @media (max-width:600px){.bgrid{grid-template-columns:1fr}}
 
+
+/* suite — everything in the system, grouped by the season's phases */
+.suite{padding:100px 0;background:var(--white);border-top:1px solid var(--line)}
+.suite .lede{color:var(--muted);font-size:17px;max-width:680px;margin-top:14px;text-wrap:pretty}
+.phases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:48px}
+.phase{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:24px 22px;display:flex;flex-direction:column;gap:18px}
+.phase .ph{display:flex;align-items:center;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.phase .ph b{font-family:var(--f-display);font-size:15px;color:var(--gold)}
+.phase .ph h3{font-size:18px}
+.feat{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
+.feat .ic{width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--gold-hi);display:grid;place-items:center}
+.feat .ic svg{width:17px;height:17px}
+.feat h4{font-family:var(--f-body);font-weight:700;font-size:16px;line-height:1.45;margin:6px 0 0;color:var(--ink)}
+.feat p{font-size:14.5px;color:var(--muted);margin:4px 0 0;line-height:1.65}
+.states{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:28px;padding:18px 22px;border-radius:14px;background:var(--tint)}
+.states>span{font-size:14px;font-weight:700;color:var(--navy);margin-inline-end:6px}
+.states i{font-style:normal;font-size:13.5px;color:var(--ink);background:#fff;border:1px solid #DCE3EB;border-radius:99px;padding:5px 12px}
+@media (max-width:1060px){.phases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:600px){.suite{padding:72px 0}.phases{grid-template-columns:1fr}}
+
 /* model */
 .model{padding:0 0 100px}
 .mgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
@@ -365,6 +386,7 @@ footer .fb svg{width:16px;height:16px;color:#7F93A8}
       <a href="#story">كيف يعمل</a>
       <a href="#film">الفيديو</a>
       <a href="#proof">التجربة</a>
+      <a href="#suite">النظام</a>
       <a href="#features">المزايا</a>
       <a class="btn btn-gold" href="#film">شاهد الفيديو</a>
     </nav>
@@ -376,7 +398,7 @@ footer .fb svg{width:16px;height:16px;color:#7F93A8}
   <div class="wrap hero-grid">
     <div>
       <h1 class="rv">آلاف الجوازات…<span>وكل جواز تعرف مكانه.</span></h1>
-      <p class="lead rv d1">نظام عربي يتابع جواز الحاج من لحظة استلامه حتى مغادرته: أين حُفظ، وما حالته، ومن تعامل معه، بخطوات واضحة وسهلة التعلّم.</p>
+      <p class="lead rv d1">منصة عربية متكاملة لإدارة جوازات الحجاج طوال الموسم: من استيراد الكشوف والاستلام والحفظ، إلى متابعة الحاج والترحيل والرحلات، حتى مغادرته.</p>
       <div class="ctas rv d2">
         <a class="btn btn-gold" href="#story">شاهد كيف يعمل</a>
         <a class="btn btn-ghost" href="#film">الفيديو التعريفي</a>
@@ -533,6 +555,21 @@ footer .fb svg{width:16px;height:16px;color:#7F93A8}
       <div class="bx rv d1"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 7h16v13H4zM2 3h20v4H2zM10 12h4"/></svg></span><h3>أرشيف الموسم</h3><p>في الختام يُقفل الموسم فلا يُعدَّل، ويُحفظ أرشيفه كاملاً للرجوع إليه.</p></div>
       <div class="bx rv d2"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span><h3>نسخ احتياطي مشفّر</h3><p>بياناتك محفوظة بنسخ احتياطية مشفّرة.</p></div>
     </div>
+  </div>
+</section>
+
+<section class="suite" id="suite">
+  <div class="wrap">
+    <div class="kicker rv">كل ما في النظام</div>
+    <h2 class="h2 rv">منصة متكاملة للموسم كله</h2>
+    <p class="lede rv d1">ليست الأدراج وحدها. النظام يرافق فريق الجوازات من استيراد الكشوف قبل وصول الحجاج، حتى آخر حافلة وآخر رحلة.</p>
+    <div class="phases">
+      <div class="phase rv"><div class="ph"><b>01</b><h3>قبل وصول الحجاج</h3></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></svg></span><div><h4>استيراد الكشوف</h4><p>من ملفات الإكسل، بقوالب أعمدة تحفظ طريقة كل شركة، ويُفحص كل صف قبل اعتماده.</p></div></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5l8-3 8 3v16M9 21v-5h6v5M8 8h.01M12 8h.01M16 8h.01M8 12h.01M12 12h.01M16 12h.01"/></svg></span><div><h4>المكاتب والمراكز</h4><p>توزيع المجموعات على المكاتب، فيعرف كل مكتب حجاجه.</p></div></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21V8l9-5 9 5v13M3 21h18M9 21v-6h6v6"/></svg></span><div><h4>الفنادق والعقود</h4><p>بيانات السكن مسجّلة، وتظهر مع بيانات كل حاج.</p></div></div></div>
+      <div class="phase rv d1"><div class="ph"><b>02</b><h3>الاستلام والحفظ</h3></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V4h3M18 4h3v3M21 17v3h-3M6 20H3v-3M7 8v8M10 8v8M13 8v8M17 8v8"/></svg></span><div><h4>جلسات الإدخال</h4><p>مسح باركود الجواز، فيُسجَّل الحاج برقم مطابقة لا يتكرر.</p></div></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M10 6h4M10 12h4M10 18h4"/></svg></span><div><h4>المجموعات والأدراج</h4><p>سعة محددة لكل درج، ومكان كل جواز معروف في أي لحظة.</p></div></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20M6 15h4"/></svg></span><div><h4>بطاقات نسك</h4><p>إدخال البطاقات وتسليمها، وخطاب بدل فاقد عند الحاجة.</p></div></div></div>
+      <div class="phase rv d2"><div class="ph"><b>03</b><h3>متابعة الحاج</h3></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg></span><div><h4>حالة كل حاج</h4><p>إخراج الجواز وإعادته، والتنويم والاحتجاز، كلها مسجّلة بسببها ووقتها.</p></div></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="19" r="2"/><circle cx="18" cy="5" r="2"/><path d="M8 19h8a3 3 0 0 0 0-6H8a3 3 0 0 1 0-6h8"/></svg></span><div><h4>رحلة المدينة</h4><p>من ذهب إلى المدينة، ومن عاد، ومن غادر منها، في لوحة واحدة.</p></div></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg></span><div><h4>بحث فوري</h4><p>بالاسم أو رقم الجواز أو رقم المطابقة، من أي صفحة في النظام.</p></div></div></div>
+      <div class="phase rv d3"><div class="ph"><b>04</b><h3>الترحيل والمغادرة</h3></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="15" rx="2"/><path d="M4 11h16M8 21v-3M16 21v-3M8 15h.01M16 15h.01"/></svg></span><div><h4>كشوف الحافلات</h4><p>كشف لكل حافلة، وتأكيد التسليم بالمسح، مع رقم كشف الوزارة.</p></div></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 14L3 11l1-2 8 1 5-6h2l-2 7 4 2v2l-5-1-3 6h-2l1-6z"/></svg></span><div><h4>الرحلات الجوية</h4><p>رفع جداول الرحلات ومطابقة الركاب مع بيانات الحجاج.</p></div></div><div class="feat"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 17v-3M12 17v-6M16 17v-2"/></svg></span><div><h4>التقارير والتصدير</h4><p>ملخص الموسم ونشاط الموظفين، وتصدير إكسل جاهز للتسليم.</p></div></div></div>
+    </div>
+    <div class="states rv"><span>حالات يتتبّعها النظام لكل حاج:</span><i>في مكة</i><i>في المدينة</i><i>عاد من المدينة</i><i>منوّم</i><i>موقوف</i><i>مُخرَج</i><i>مغادرة المدينة</i><i>مغادرة جدة</i></div>
   </div>
 </section>
 
